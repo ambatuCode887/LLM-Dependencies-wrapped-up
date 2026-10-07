@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+httpx
+pyyaml
+
+[benchmark]
+python-toon
+tiktoken
+
+[dev]
+pytest
+pytest-asyncio
+
+[toon]
+python-toon

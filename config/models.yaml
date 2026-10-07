@@ -1,0 +1,31 @@
+# Agent profile -> ordered chain tried until a request succeeds.
+backends:
+  ollama:
+    type: ollama
+    base_url: http://localhost:11434/v1
+  llamacpp:
+    type: openai_compatible
+    base_url: http://localhost:8080/v1
+
+models:
+  planner:
+    toon_input: true
+    toon_output: false
+    chain:
+      - {backend: ollama, model: llama3.1:latest}
+      - {backend: ollama, model: qwen2.5:3b}   # backup
+  embedder:
+    chain:
+      - { backend: ollama, model: nomic-embed-text }
+  coder:
+    toon_input: true
+    toon_output: false
+    chain:
+      - {backend: ollama, model: qwen2.5:3b}
+      - {backend: ollama, model: llama3.1:latest}   # backup
+
+settings:
+  timeout_s: 60
+  single_model_only: true # Ollama unloads before and after each request
+  toon_input: true # encode structured context as TOON before sending
+  toon_output: true # decode valid TOON assistant content to JSON text

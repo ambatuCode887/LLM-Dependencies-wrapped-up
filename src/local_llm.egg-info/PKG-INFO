@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: local-llm
+Version: 0.1.0
+Summary: Local LLM gateway: OpenAI-compatible, multi-model, with fallback and TOON support
+Requires-Python: >=3.10
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: httpx
+Requires-Dist: pyyaml
+Provides-Extra: toon
+Requires-Dist: python-toon; extra == "toon"
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-asyncio; extra == "dev"
+Provides-Extra: benchmark
+Requires-Dist: python-toon; extra == "benchmark"
+Requires-Dist: tiktoken; extra == "benchmark"
